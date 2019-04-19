@@ -53,6 +53,7 @@ return -1;
 float shoulderExtPercent(){
 //  return float(analogRead(A1)) / 1023 * 100;
 float ang = mpu6050.getAccX();
+Serial.println(ang);
 ang = max(-1,ang);
 ang = min(1,ang);
 ang = ang + 1; // ang is between 0 and 2;

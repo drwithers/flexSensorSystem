@@ -15,7 +15,7 @@ void setup() {
   Serial.println("Servo Range Finder!");
   pinMode(13,INPUT);
   pwm.begin();
-  pwm.setPWMFreq(60);  // Analog servos run at ~60 Hz updates
+  pwm.setPWMFreq(50);  // Analog servos run at ~60 Hz updates
   delay(10);
 }
 
@@ -45,5 +45,5 @@ void loop() {
   pwm.setPWM(servonum, 0, 4096);
   delay(500);
   servonum --;
-  if (servonum == 0) servonum = 5;
+  if (servonum < 0) servonum = 5;
 }
