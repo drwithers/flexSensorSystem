@@ -1,8 +1,11 @@
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
 #include "armConstraints.hpp"
+#include <MPU6050_tockn.h>
 
+//I2C definitions
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(&Wire, 0x40);
+MPU6050 mpu6050(Wire); //address 0X68 I believe
 
 //Globals
 int cur_ang[6] = {OFF, OFF, OFF, OFF, OFF, OFF};
@@ -12,6 +15,7 @@ int bits = 10;
 
 void setup() {
   Serial.begin(9600);
+  Wire.begin();
   pwm.begin();
   pwm.setPWMFreq(50);  // Analog servos run at ~60 Hz updates
   pinMode(11,OUTPUT);
@@ -25,9 +29,12 @@ void setup() {
   pwm.setPWM(pins[wrist_b], 0, OFF);
   pwm.setPWM(pins[wrist_t], 0, OFF);
   pwm.setPWM(pins[grip], 0, OFF);
+  mpu6050.begin();
+  mpu6050.calcGyroOffsets(true);
 }
 
 void loop() {
+  mpu6050.update();
   p0 = shoulderRotPercent();
   p1 = shoulderExtPercent();
   p2 = elbowPercent();
