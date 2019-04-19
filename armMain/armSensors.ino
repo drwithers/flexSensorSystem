@@ -15,9 +15,6 @@ int bendread(int outpin, int adc){
   return data;
 }
 
-//
-
-
 float gripPercent(){
 //  static int sensor_max5 = 0;
 //  int sdata;

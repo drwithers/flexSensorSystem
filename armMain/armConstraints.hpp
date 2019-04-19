@@ -11,7 +11,7 @@
 // Servo Definitions
 //{shoulder_rot, shoulder_ex, elbow, wrist_b, wrist_t, grip}
 const uint8_t pins[6] = {0, 1, 2, 3, 4, 5};
-const uint16_t smin[6] = {110,  85, 100, 100, 110, 125}; //Right arm minimums
-const uint16_t smax[6] = {410, 350, 350, 405, 415, 280}; //Right arm maximums
+const uint16_t smin[6] = {130, 100, 100, 130, 130, 180}; //Right arm minimums : Right arm elbow needs adjusted mechanically.
+const uint16_t smax[6] = {500, 400, 350, 475, 500, 330}; //Right arm maximums
 //const uint16_t smin[6] = {110,  85, 100, 100, 110, 125}; //Left arm minimums
 //const uint16_t smax[6] = {410, 350, 350, 405, 415, 280}; //Left arm maximums
