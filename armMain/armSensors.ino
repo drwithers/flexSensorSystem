@@ -15,6 +15,30 @@ int bendread(int outpin, int adc){
   return data;
 }
 
+float accread(char axis){
+  static const int avg = 25;
+  float ang = 0,dat = 0;
+  for(int i=0;i<avg;i++){
+    mpu6050.update();
+    switch(axis){
+      case 'x':
+        dat = mpu6050.getAccX();
+        ang = constrain(dat,-1,1) + ang + 1;
+        break;
+      case 'y':
+        dat = mpu6050.getAccY();
+        ang = constrain(dat,-1,1) + ang + 1;
+        break;
+      default:
+        Serial.println("Error running accread:");
+        break;
+    }
+  }
+  ang = ang / avg;
+  return ang;
+}
+
+
 float gripPercent(){
 //  static int sensor_max5 = 0;
 //  int sdata;
@@ -52,21 +76,17 @@ return -1;
 
 float shoulderExtPercent(){
 //  return float(analogRead(A1)) / 1023 * 100;
-float ang = mpu6050.getAccX();
+char ax = 'x';
+float ang = accread(ax);
 Serial.println(ang);
-ang = max(-1,ang);
-ang = min(1,ang);
-ang = ang + 1; // ang is between 0 and 2;
 return (1-ang/2)*100;
 //return -1;
 }
 
 float shoulderRotPercent(){
 //  return float(analogRead(A0)) / 1023 * 100;
-float ang = mpu6050.getAccY();
-ang = max(-1,ang);
-ang = min(1,ang);
-ang = ang + 1; // ang is between 0 and 2;
+char ax = 'y';
+float ang = accread(ax);
 return ( ang/2)*100;
 //return -1;
 }
