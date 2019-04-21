@@ -41,6 +41,6 @@ void go() {
       cur_ang[j] = cur_ang[j] + inc;
       pwm.setPWM(pins[j], 0, cur_ang[j]);
     }
-    //delay(1);
+    delay(1);
   }
 }
