@@ -44,6 +44,6 @@ void loop() {
   }
   pwm.setPWM(servonum, 0, 4096);
   delay(500);
-  servonum --;
-  if (servonum < 0) servonum = 5;
+  if (servonum == 0) servonum = 5;
+  else servonum --;
 }

@@ -1,11 +1,5 @@
 #define JOINTS 6
 #define OFF 4096
-#define shoulder_rot 0 //Shoulder Rotate: back to front : 110 to 410
-#define shoulder_ex 1  //Shoulder Extend: up to down : 75 to 375
-#define elbow 2        //Elbow Bend: bent to strait : 100 to 350
-#define wrist_b 3      //Wrist Bend: out to in : 100 to 405
-#define wrist_t 4      //Wrist Twist: in to out : 110 to 415
-#define grip 5         //Hand Gripper: open to closed : 125 to 280
 //setPWM(channel, on, off)
 
 // Servo Definitions
