@@ -28,8 +28,8 @@ void setup() {
 void loop() {
   int once = 1;
   //if (once==1){
-    perset(40,35, 70, 25, 40, 70); //Flexing pose
-    //perset(40,5, 10, 25, 40, 20); //Success pose
+//    perset(40,35, 70, 25, 40, 70); //Flexing pose
+    perset(40,5, 10, 25, 40, 20); //Success pose
     go();
     delay(3000);
     once = 0;
