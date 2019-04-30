@@ -1,4 +1,4 @@
-// This function reads the sensor a number of times and 
+ // This function reads the sensor a number of times and 
 // takes the average of those. Then it returns the average.
 int bendread(int outpin, int adc){
   static const int avg = 25;
