@@ -18,10 +18,12 @@ void setup() {
   //Wire.begin();
   pwm.begin();
   pwm.setPWMFreq(50);  // Analog servos run at ~60 Hz updates
-  pinMode(11,OUTPUT);
-  pinMode(10,OUTPUT);
-  pinMode(9,OUTPUT);
-  delay(10);
+  pinMode(30,OUTPUT);pinMode(31,OUTPUT);
+  pinMode(34,OUTPUT);pinMode(35,OUTPUT);
+  pinMode(38,OUTPUT);pinMode(39,OUTPUT);
+  pinMode(42,OUTPUT);pinMode(43,OUTPUT);
+  pinMode(46,OUTPUT);pinMode(47,OUTPUT);
+  delay(100);
   //analogReadResolution(bits);
   pwm.setPWM(pins[shoulder_rot], 0, OFF);
   pwm.setPWM(pins[shoulder_ex], 0, OFF);
@@ -34,24 +36,24 @@ void setup() {
 }
 
 void loop() {
-  //mpu6050.update();
+  Serial.println("=====================");
+  mpu6050.update();
+  Serial.print("  rotate: ");
   p0 = shoulderRotPercent();
-  //Serial.println("after p0");
+  Serial.print("  extend: ");
   p1 = shoulderExtPercent();
-  //Serial.println("after p1");
+  Serial.print("  elbow:  ");
   p2 = elbowPercent();
-  //Serial.println("after p2");
+  Serial.print("  wrist:  ");
   p3 = wristPercent();
-  //Serial.println("after p3");
+  Serial.print("  twist:  ");
   p4 = twistPercent();
-  //Serial.println("after p4");
+  Serial.print("  hand:   ");
   p5 = gripPercent();
-  //Serial.println("after p5");
-  //delay(50);
-  //Serial.println("after read");
-  perset(p0, p1, p2, p3, p4, p5);
+  Serial.print("=====================");
+//  perset(p0, p1, p2, p3, p4, p5);
   //Serial.println("after set");
-  go();
+//  go();
   //Serial.println("after go");
-  //delay(40);
+  delay(500);
 }
