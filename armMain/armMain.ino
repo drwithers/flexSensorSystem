@@ -4,7 +4,7 @@
 #include <MPU6050_tockn.h>
 
 //I2C definitions
-Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(&Wire, 0x40);
+Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(&Wire1, 0x40);
 MPU6050 mpu6050(Wire); //address 0X68 I believe
 
 //Globals
@@ -15,11 +15,11 @@ int bits = 10;
 
 void setup() {
   Serial.begin(9600);
-  //Wire.begin();
+  Wire.begin();
   pwm.begin();
   pwm.setPWMFreq(50);  // Analog servos run at ~60 Hz updates
   pinMode(30,OUTPUT);pinMode(31,OUTPUT);
-  pinMode(34,OUTPUT);pinMode(35,OUTPUT);
+  pinMode(34,OUTPUT);pinMode(35,OUTPUT); 
   pinMode(38,OUTPUT);pinMode(39,OUTPUT);
   pinMode(42,OUTPUT);pinMode(43,OUTPUT);
   pinMode(46,OUTPUT);pinMode(47,OUTPUT);
@@ -32,28 +32,29 @@ void setup() {
   pwm.setPWM(pins[wrist_t], 0, OFF);
   pwm.setPWM(pins[grip], 0, OFF);
   mpu6050.begin();
-  //mpu6050.calcGyroOffsets(true);
+  mpu6050.calcGyroOffsets(false);
 }
 
 void loop() {
   Serial.println("=====================");
   mpu6050.update();
-  Serial.print("  rotate: ");
+  //Serial.print("  rotate: ");
   p0 = shoulderRotPercent();
-  Serial.print("  extend: ");
+  //Serial.print("  extend: ");
   p1 = shoulderExtPercent();
-  Serial.print("  elbow:  ");
+  //Serial.print("  elbow:  ");
   p2 = elbowPercent();
-  Serial.print("  wrist:  ");
+  //Serial.print("  wrist:  ");
   p3 = wristPercent();
-  Serial.print("  twist:  ");
+  //Serial.print("  twist:  ");
   p4 = twistPercent();
-  Serial.print("  hand:   ");
+  //Serial.print("  hand:   ");
   p5 = gripPercent();
-  Serial.print("=====================");
-//  perset(p0, p1, p2, p3, p4, p5);
+  Serial.println("=====================");
+  perset(p0, p1, p2, p3, p4, p5);
   //Serial.println("after set");
-//  go();
+  go();
   //Serial.println("after go");
   delay(500);
+  Serial.println("=====================");
 }

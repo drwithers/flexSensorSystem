@@ -15,32 +15,38 @@ void perset(float j1, float j2, float j3, float j4, float j5, float j6) {
 // This function is used to move the servos from the 
 // current values to the set values all simultaneously.
 void go() {
-  int inc;
-  const int inc_val = 1;
-  while (set_ang[0] != cur_ang[0] || set_ang[1] != cur_ang[1] ||
-         set_ang[2] != cur_ang[2] || set_ang[3] != cur_ang[3] ||
-         set_ang[4] != cur_ang[4] || set_ang[5] != cur_ang[5]) {
-    for (uint8_t j = 0; j < JOINTS; j++) {
-      if (set_ang[j] > cur_ang[j]) {
-        if (set_ang[j] == OFF) {
-          cur_ang[j] == OFF;
-          inc = 0;
-        }
-        else inc = inc_val;
-      }
-      else if (set_ang[j] < cur_ang[j]) {
-        if (cur_ang[j] == OFF) {
-          cur_ang[j] = smin[j] + ((smax[j] - smin[j]) * 50 / 100);
-          inc = 0;
-        }
-        else inc = -inc_val;
-      }
-      else {
-        inc = 0;
-      }
-      cur_ang[j] = cur_ang[j] + inc;
-      pwm.setPWM(pins[j], 0, cur_ang[j]);
-    }
-    delay(1);
+//  int inc;
+//  const int inc_val = 1;
+//  while (set_ang[0] != cur_ang[0] || set_ang[1] != cur_ang[1] ||
+//         set_ang[2] != cur_ang[2] || set_ang[3] != cur_ang[3] ||
+//         set_ang[4] != cur_ang[4] || set_ang[5] != cur_ang[5]) {
+//    for (uint8_t j = 0; j < JOINTS; j++) {
+//      if (set_ang[j] > cur_ang[j]) {
+//        if (set_ang[j] == OFF) {
+//          cur_ang[j] == OFF;
+//          inc = 0;
+//        }
+//        else inc = inc_val;
+//      }
+//      else if (set_ang[j] < cur_ang[j]) {
+//        if (cur_ang[j] == OFF) {
+//          cur_ang[j] = smin[j] + ((smax[j] - smin[j]) * 50 / 100);
+//          inc = 0;
+//        }
+//        else inc = -inc_val;
+//      }
+//      else {
+//        inc = 0;
+//      }
+//      cur_ang[j] = cur_ang[j] + inc;
+//      pwm.setPWM(pins[j], 0, cur_ang[j]);
+//      Serial.print(cur_ang[j]);Serial.print(":");Serial.println(set_ang[j]);
+//      if(j==5) Serial.println("go");
+//    }
+//    delay(1);
+//  }
+  for (uint8_t j = 0; j < JOINTS; j++) {
+    cur_ang[j] = set_ang[j];
+    pwm.setPWM(pins[j], 0, cur_ang[j]);
   }
 }

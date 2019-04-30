@@ -7,7 +7,7 @@ int bendread(int outpin, int adc){
   delay(200);
   data = 0;
   for(int i=0;i<avg;i++){
-    delay(10);
+    //delay(10);
     data = data + analogRead(adc);
   }
   data = data/avg;
