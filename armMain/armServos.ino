@@ -20,7 +20,7 @@ void go() {
 //  while (set_ang[0] != cur_ang[0] || set_ang[1] != cur_ang[1] ||
 //         set_ang[2] != cur_ang[2] || set_ang[3] != cur_ang[3] ||
 //         set_ang[4] != cur_ang[4] || set_ang[5] != cur_ang[5]) {
-//    for (uint8_t j = 0; j < JOINTS; j++) {
+//    for (uint8_t j = 0; j < JOINTS; j++) { 
 //      if (set_ang[j] > cur_ang[j]) {
 //        if (set_ang[j] == OFF) {
 //          cur_ang[j] == OFF;
@@ -30,7 +30,7 @@ void go() {
 //      }
 //      else if (set_ang[j] < cur_ang[j]) {
 //        if (cur_ang[j] == OFF) {
-//          cur_ang[j] = smin[j] + ((smax[j] - smin[j]) * 50 / 100);
+//          cur_ang[j] = smin[j] + ((smax[j] - smin[j]) * 50 / 100);// set the current agle to 50% of the range of motion.
 //          inc = 0;
 //        }
 //        else inc = -inc_val;
@@ -45,6 +45,7 @@ void go() {
 //    }
 //    delay(1);
 //  }
+// this may not work if the motors are not plugged into ports 0-5
   for (uint8_t j = 0; j < JOINTS; j++) {
     cur_ang[j] = set_ang[j];
     pwm.setPWM(pins[j], 0, cur_ang[j]);

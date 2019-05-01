@@ -40,7 +40,7 @@ float accread(char axis){
     }
   }
         //Serial.println("after for:");
-  ang = ang / avg;
+  ang = ang / avg;//calculate average angle
   return ang;
 }
 
@@ -49,8 +49,8 @@ float gripPercent(){
   static int sensor_max5 = 0;
   int sdata;
   sdata = bendread(11,A7);
-  Serial.print(sdata);Serial.print("/");Serial.println(sensor_max5);
   sensor_max5 = max(sdata, sensor_max5);
+  Serial.print(sdata);Serial.print("/");Serial.println(sensor_max5);
   return (1-float(sdata)/float(sensor_max5))*100;
 }
 
@@ -83,16 +83,16 @@ float elbowPercent(){
 }
 
 float shoulderExtPercent(){
-char ax = 'x';
-float ang = accread(ax);
+char axis = 'x';
+float ang = accread(axis);
 Serial.println(ang);
 return (1-ang/2)*100;
 
 }
 
 float shoulderRotPercent(){
-char ax = 'y';
-float ang = accread(ax);
+char axis = 'y';
+float ang = accread(axis);
 Serial.println(ang);
 return ( ang/2)*100;
 }
