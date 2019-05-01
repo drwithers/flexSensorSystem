@@ -4,7 +4,7 @@ void perset(float j1, float j2, float j3, float j4, float j5, float j6) {
   j1 = min(j1, 100); j2 = min(j2, 100);
   j3 = min(j3, 100); j4 = min(j4, 100);
   j5 = min(j5, 100); j6 = min(j6, 100);
-  set_ang[0] = int((j1 >= 0) ? (smin[0] + ((smax[0] - smin[0]) * j1 / 100)) : OFF);
+  set_ang[0] = int((j1 >= 0) ? (smin[0] + ((smax[0] - smin[0]) * j1 / 100)) : OFF); //if j1>=0 then find the percentage in the range and add the minimum to place it at the correct point in that range. else turn it off
   set_ang[1] = int((j2 >= 0) ? (smin[1] + ((smax[1] - smin[1]) * j2 / 100)) : OFF);
   set_ang[2] = int((j3 >= 0) ? (smin[2] + ((smax[2] - smin[2]) * j3 / 100)) : OFF);
   set_ang[3] = int((j4 >= 0) ? (smin[3] + ((smax[3] - smin[3]) * j4 / 100)) : OFF);

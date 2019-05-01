@@ -26,10 +26,10 @@ void setup() {
 }
 
 void loop() {
-//    perset(40,35, 70, 25, 40, 70); //Flexing pose
+    perset(40,35, 70, 25, 40, 70); //Flexing pose
     //perset(40,5, 10, 25, 40, 20); //Success pose
-    perset(-1,-1,-1,-1,-1,-1);//off
+    //perset(-1,-1,-1,-1,-1,-1);//off
     go();
     delay(1000);
-    Serial.println("Here");
+    //Serial.println("Here");
 }

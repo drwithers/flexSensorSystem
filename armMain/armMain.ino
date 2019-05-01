@@ -38,17 +38,18 @@ void setup() {
 void loop() {
   Serial.println("=====================");
   mpu6050.update();
-  //Serial.print("  rotate: ");
+  Serial.print("  rotate: ");
   p0 = shoulderRotPercent();
-  //Serial.print("  extend: ");
+  Serial.print("  extend: ");
   p1 = shoulderExtPercent();
-  //Serial.print("  elbow:  ");
+  //p1=40;
+  Serial.print("  elbow:  ");
   p2 = elbowPercent();
-  //Serial.print("  wrist:  ");
+  Serial.print("  wrist:  ");
   p3 = wristPercent();
-  //Serial.print("  twist:  ");
+  Serial.print("  twist:  ");
   p4 = twistPercent();
-  //Serial.print("  hand:   ");
+  Serial.print("  hand:   ");
   p5 = gripPercent();
   Serial.println("=====================");
   perset(p0, p1, p2, p3, p4, p5);
